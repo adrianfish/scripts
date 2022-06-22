@@ -17,8 +17,7 @@ def connect(username, password):
     for event in client.events():
         pprint.pprint(json.loads(event.data))
 
-users = ['user1', 'user2', 'user3']
-
-for user in users:
-    x = threading.Thread(target=connect, args=(user, user))
+for num in range(1, 100):
+    x = threading.Thread(target=connect, args=(f'user{num}', f'user{num}'))
     x.start()
+
